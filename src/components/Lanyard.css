@@ -9,8 +9,12 @@
   justify-content: center;
   align-items: flex-start;
   overflow: visible;
-  touch-action: none;
+  touch-action: pan-y;
   pointer-events: auto;
+}
+
+.lanyard-wrapper canvas {
+  touch-action: pan-y !important;
 }
 
 @media (min-width: 1024px) {
@@ -18,5 +22,10 @@
     width: 140%;
     margin-left: -20%;
     max-width: none;
+    touch-action: none;
+  }
+
+  .lanyard-wrapper canvas {
+    touch-action: none !important;
   }
 }

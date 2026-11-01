@@ -74,6 +74,7 @@ export default function Lanyard({
         camera={{ position: position, fov: fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
+        style={{ touchAction: isMobile ? 'pan-y' : 'none' }}
         onCreated={({ gl }: { gl: THREE.WebGLRenderer }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <ambientLight intensity={1.5} />
@@ -278,11 +279,22 @@ function Band({
             position={[0, -1.05, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
-            onPointerUp={(e: any) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
-            onPointerDown={(e: any) => (
-              e.target.setPointerCapture(e.pointerId),
-              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())))
-            )}
+            onPointerUp={(e: any) => {
+              if (e.target?.hasPointerCapture?.(e.pointerId)) {
+                e.target.releasePointerCapture(e.pointerId);
+              }
+              drag(false);
+            }}
+            onPointerCancel={() => {
+              drag(false);
+              hover(false);
+            }}
+            onPointerDown={(e: any) => {
+              if (!isMobile && e.target?.setPointerCapture) {
+                e.target.setPointerCapture(e.pointerId);
+              }
+              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
+            }}
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial

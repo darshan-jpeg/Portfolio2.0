@@ -32,14 +32,14 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
   };
 
   return (
-    <section 
-      id="hero" 
+    <section
+      id="hero"
       className="relative min-h-screen min-h-[100dvh] flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto w-full overflow-visible snap-start"
     >
       {/* Vertically Centered Main Row */}
       <div className="flex-1 flex items-center justify-center w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
-          
+
           {/* Left Column: Large Apple Monochromatic Typography */}
           <div className="lg:col-span-6 flex flex-col justify-center space-y-4 sm:space-y-6 text-left w-full relative z-10">
 
@@ -85,8 +85,8 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
               className="space-y-2 sm:space-y-3 pt-1"
             >
               <blockquote className="text-lg sm:text-2xl lg:text-3xl font-light text-neutral-900 dark:text-neutral-100 border-l border-black/20 dark:border-white/20 pl-3 sm:pl-4 py-0.5 leading-snug min-h-[3.6rem] sm:min-h-[4.4rem] lg:min-h-[5.2rem] flex items-center">
-                <PowderText 
-                  sentences={dynamicQuotes} 
+                <PowderText
+                  sentences={dynamicQuotes}
                   interval={4200}
                   className="w-full"
                 />
