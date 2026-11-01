@@ -138,11 +138,6 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             </motion.div>
           </div>
 
-          {/* Mobile-only Lanyard Card (renders in normal flow below buttons) */}
-          <div className="block lg:hidden w-full h-[440px] sm:h-[500px] relative z-20 pointer-events-auto flex items-start justify-center overflow-visible mt-2">
-            <LanyardCard />
-          </div>
-
           {/* Desktop Right Column Spacer to reserve grid balance */}
           <div className="hidden lg:block lg:col-span-6 min-h-[580px] pointer-events-none" />
         </div>
